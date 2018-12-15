@@ -113,6 +113,19 @@ function check-dotfiles {
     fi
 }
 
+# These are functions I pulled from a dev at Atlassian.  
+# They can be used in situations like 'git status -s |col 2' to print the second column
+# Something more complex is 'docker images |col 3 |xargs | skip 1' which can be used further ...
+# A more complex time saver 'docker rmi $(docker images |col 3 |xargs skip 1)'
+function col {
+    awk -v col=$1 '{print $col}'
+}
+
+function skip {
+    n=$(($1 +1))
+    cut -d' ' -f${n}-
+}
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi

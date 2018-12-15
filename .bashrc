@@ -98,7 +98,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Ansible configuration
 export ANSIBLE_CONFIG=$HOME/ansible.cfg
-export ANSIBLE=$HOME/apps/ansible
+export ANSIBLE=$HOME/src/projects/ansible
 export ANSIBLE_EXTRAS=$HOME/src/projects/ansible_extras/ansible_modules
 
 # Alias definitions.
@@ -122,13 +122,15 @@ if ! shopt -oq posix; then
 fi
 echo "* * * .bashrc"
 set -o vi
-export PS1='(\u) [\W]$ '
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+#export PS1='(\u) [\W]$ '
+export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n\$ '
 export IBUS_ENABLE_SYNC_MODE=1
 echo "* * * START - Ansible configuration."
 . ${ANSIBLE}/hacking/env-setup
 echo "* * * COMPLETE - Ansible configuration - Check output."
 echo "* * * INFO - Ansible extras - ${ANSIBLE_EXTRAS}"
-source ~/git-completion.bash
 
 function uu
 {
@@ -140,3 +142,7 @@ function uu
    git fetch upstream
    git merge upstream/${BRANCH}
 }
+#export GOPATH=${HOME}/go
+export GOROOT=/usr/local/go
+export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
+alias config='/usr/bin/git --git-dir=/home/khulques/.cfg --work-tree=/home/khulques'

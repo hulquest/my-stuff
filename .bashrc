@@ -102,6 +102,17 @@ function set-ansible {
     echo "* * * INFO - Ansible extras - ${ANSIBLE_EXTRAS}"
 }
 
+function check-dotfiles {
+    files=$(config diff --name-only master)
+    if [[ -z ${files} ]] ; then
+        echo "* * * Dot files are up to date"
+    else
+        for f in ${files} ; do
+            echo "* * * Dot file [${f}] is out of date."
+        done
+    fi
+}
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -120,7 +131,6 @@ echo "* * * .bashrc"
 set -o vi
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
-#export PS1='(\u) [\W]$ '
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n\$ '
 export IBUS_ENABLE_SYNC_MODE=1
 
@@ -136,3 +146,4 @@ function uu
 }
 export GOROOT=/usr/local/go
 export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
+check-dotfiles

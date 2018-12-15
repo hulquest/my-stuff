@@ -87,24 +87,20 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Ansible configuration
-export ANSIBLE_CONFIG=$HOME/ansible.cfg
-export ANSIBLE=$HOME/src/projects/ansible
-export ANSIBLE_EXTRAS=$HOME/src/projects/ansible_extras/ansible_modules
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+function set-ansible {
+    export ANSIBLE_CONFIG=$HOME/ansible.cfg
+    export ANSIBLE=$HOME/src/projects/ansible
+    export ANSIBLE_EXTRAS=$HOME/src/projects/ansible_extras/ansible_modules
+    echo "* * * START - Ansible configuration."
+    . ${ANSIBLE}/hacking/env-setup
+    echo "* * * COMPLETE - Ansible configuration - Check output."
+    echo "* * * INFO - Ansible extras - ${ANSIBLE_EXTRAS}"
+}
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -127,10 +123,6 @@ source ~/.git-prompt.sh
 #export PS1='(\u) [\W]$ '
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n\$ '
 export IBUS_ENABLE_SYNC_MODE=1
-echo "* * * START - Ansible configuration."
-. ${ANSIBLE}/hacking/env-setup
-echo "* * * COMPLETE - Ansible configuration - Check output."
-echo "* * * INFO - Ansible extras - ${ANSIBLE_EXTRAS}"
 
 function uu
 {
@@ -142,7 +134,5 @@ function uu
    git fetch upstream
    git merge upstream/${BRANCH}
 }
-#export GOPATH=${HOME}/go
 export GOROOT=/usr/local/go
 export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
-alias config='/usr/bin/git --git-dir=/home/khulques/.cfg --work-tree=/home/khulques'

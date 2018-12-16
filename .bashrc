@@ -1,12 +1,10 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+set -o vi
+STARS="****"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -96,19 +94,19 @@ function set-ansible {
     export ANSIBLE_CONFIG=$HOME/ansible.cfg
     export ANSIBLE=$HOME/src/projects/ansible
     export ANSIBLE_EXTRAS=$HOME/src/projects/ansible_extras/ansible_modules
-    echo "* * * START - Ansible configuration."
+    echo "${STARS} START - Ansible configuration."
     . ${ANSIBLE}/hacking/env-setup
-    echo "* * * COMPLETE - Ansible configuration - Check output."
-    echo "* * * INFO - Ansible extras - ${ANSIBLE_EXTRAS}"
+    echo "${STARS} COMPLETE - Ansible configuration - Check output."
+    echo "${STARS} INFO - Ansible extras - ${ANSIBLE_EXTRAS}"
 }
 
 function check-dotfiles {
     files=$(config diff --name-only master)
     if [[ -z ${files} ]] ; then
-        echo "* * * Dot files are up to date"
+        echo "${STARS} Dot files are up to date"
     else
         for f in ${files} ; do
-            echo "* * * Dot file [${f}] is out of date."
+            echo "${STARS} Dot file [${f}] is out of date."
         done
     fi
 }
@@ -140,8 +138,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-echo "* * * .bashrc"
-set -o vi
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n\$ '

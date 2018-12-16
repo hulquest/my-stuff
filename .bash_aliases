@@ -1,10 +1,10 @@
 #!/bin/bash
 PLATFORM=$(uname -r)
 if [[ ${PLATFROM} == *"Microsoft" ]] ; then
-   echo "*** Configuring aliases for WSL"
+   echo "${STARS} Configuring aliases for WSL"
    prefix="/mnt/c/Users/khulques"
 else
-   echo "*** Configuring aliases for generic Linux"
+   echo "${STARS} Configuring aliases for generic Linux"
    prefix="~khulques"
 fi
 

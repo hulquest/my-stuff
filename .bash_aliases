@@ -1,6 +1,6 @@
 #!/bin/bash
 PLATFORM=$(uname -r)
-if [[ ${PLATFROM} == *"Microsoft" ]] ; then
+if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    echo "${STARS} Configuring aliases for WSL"
    prefix="/mnt/c/Users/khulques"
 else

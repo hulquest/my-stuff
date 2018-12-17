@@ -1,4 +1,5 @@
 set background=dark     
+set ts=4
 set iminsert=0          
 set ruler               
 set ttyfast

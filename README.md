@@ -12,4 +12,4 @@ The **__master__** branch is the general purpose Linux dot files I use.  I use i
 The **__windows__** branch has my PowerShell startup files.  There is no bootstrapping script for Windows at this time.  Although it is on my [list of things to do](https://github.com/hulquest/my-stuff/issues/1) for the project.
 
 ### Windows SubSystem for Linux
-This branch is a [todo item](https://github.com/hulquest/my-stuff/issues/2) as well.
+[With the resolution of #2](https://github.com/hulquest/my-stuff/issues/2) there is support in the .bash_aliases file to branch on the type of Linux shell.

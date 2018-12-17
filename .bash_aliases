@@ -3,7 +3,7 @@ PLATFORM=$(uname -r)
 if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    echo "${STARS} Configuring aliases for WSL"
    prefix="/mnt/c/Users/khulques"
-   src="src"
+   src="OneDrive\ \-\ NetApp\ Inc/src"
 else
    echo "${STARS} Configuring aliases for generic Linux"
    prefix="~"

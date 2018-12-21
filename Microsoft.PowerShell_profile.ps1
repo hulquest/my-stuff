@@ -11,10 +11,6 @@ function search-history {
         }
     }
 }
-function ses {
-    & svn status |select-string "^\?" -NotMatch
-}
-
 function diff {
     param(
     [string] $file1,
@@ -118,7 +114,7 @@ function To-MNodeCfg
 
 function To-Desktop
 {
-	Set-Location "c:/Documents And Settings/khulques/Desktop"
+	Set-Location "c:/Users/khulques/Desktop"
 }
 
 function Unix-LR
@@ -130,6 +126,12 @@ function Unix-L
 { 
 	Get-ChildItem |ft Name
 }
+
+function Load_PowerCli
+{
+    & 'C:\Program Files (x86)\VMware\Infrastructure\PowerCLI\Scripts\Initialize-PowerCLIEnvironment.ps1'
+}
+
 
 $VimVersion="80"
 $VimExe="c:/program files (x86)/vim/vim"+$VimVersion+"/gvim.exe"
@@ -144,6 +146,8 @@ set-alias l Unix-L
 set-alias grep select-string
 set-alias find get-childitem
 $env:path += ";"+$AppRoot+"/ctags58"
+$env:path += ";"+"c:/users/khulques/go/bin"
+$enf:path += ";"+"c:/program files/git/bin"
 #$env:path += ";c:\windows\microsoft.net\framework\v3.5"
 #$env:path += ";e:/bin/scripts/posh"
 #$env:psmodulepath += ";C:\Program Files\NetApp\Modules\NetApp.SANtricity.PowerShell"
@@ -159,3 +163,8 @@ set-alias sh Search-History
 remove-item alias:cd -errora silentlycontinue
 remove-item -Force alias:diff -errora silentlycontinue
 set-item -path env:GIT_EDITOR -value "vi"
+Set-Alias powercli Load_PowerCli
+if ($host.Name -eq 'ConsoleHost')
+{
+    Import-Module PSReadLine
+}

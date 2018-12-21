@@ -165,9 +165,29 @@ function diff
     }
     Compare-Object $( Get-Content $FirstFile ) $( Get-Content $SecondFile)
 }
+function Reload {
+
+    $CurrentFile = $psise.CurrentFile
+    $FilePath = $CurrentFile.FullPath
+
+    $lineNum = $psise.CurrentFile.Editor.CaretLine
+    $colNum = $psise.CurrentFile.Editor.CaretColumn
+
+    $PsISE.CurrentPowerShellTab.Files.remove($CurrentFile) > $null
+
+    $newFile = $PsISE.CurrentPowerShellTab.Files.add($FilePath)
+
+    $newfile.Editor.SetCaretPosition($lineNum,$colNum)
+}
 
 Set-Alias posh goto-poshcode
 Set-Alias rest To-Rest
-Set-Alias oem To-OEM
+Set-Alias oem To-OEM 
 
 . "C:\Documents and Settings\khulques\My Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+
+$psISE.CurrentPowerShellTab.AddOnsMenu.SubMenus.Clear()
+$psISE.CurrentPowerShellTab.AddOnsMenu.Submenus.Add("Reload File",{Reload},'f4') > $null
+
+Import-Module PSReadline
+Set-PSReadlineOption -EditMode Vi 

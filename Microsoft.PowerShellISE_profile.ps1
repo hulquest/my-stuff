@@ -189,5 +189,5 @@ Set-Alias oem To-OEM
 $psISE.CurrentPowerShellTab.AddOnsMenu.SubMenus.Clear()
 $psISE.CurrentPowerShellTab.AddOnsMenu.Submenus.Add("Reload File",{Reload},'f4') > $null
 
-Import-Module PSReadline
-Set-PSReadlineOption -EditMode Vi 
+# Import-Module PSReadline
+# Set-PSReadlineOption -EditMode Vi 

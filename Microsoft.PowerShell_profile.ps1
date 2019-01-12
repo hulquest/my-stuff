@@ -37,7 +37,6 @@ function cd {
 
 function prompt
 {
-   $dirName = Get-Item .
 	"PS [$($(Get-Item .).Name)] > "
 }
 

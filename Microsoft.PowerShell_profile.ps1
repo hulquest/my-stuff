@@ -117,6 +117,7 @@ $VimExe="c:/program files (x86)/vim/vim"+$VimVersion+"/gvim.exe" # DEPRECATED - 
 # Additions to search path.
 $env:path += ";"+"c:/users/khulques/go/bin"
 $env:path += ";"+"c:/program files/git/bin"
+$env:path += ";"+"c:/python35/scripts"
 
 # Aliases
 set-alias gh get-history

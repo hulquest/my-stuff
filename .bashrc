@@ -91,13 +91,13 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Ansible configuration
 function set-ansible {
+    SRC="/mnt/c/Users/khulques/src"
     export ANSIBLE_CONFIG=$HOME/ansible.cfg
-    export ANSIBLE=$HOME/src/projects/ansible
-    export ANSIBLE_EXTRAS=$HOME/src/projects/ansible_extras/ansible_modules
+    export ANSIBLE=${SRC}/ansible
+    export ANSIBLE_LIBRARY=${ANSIBLE}/lib/ansible/modules
     echo "${STARS} START - Ansible configuration."
     . ${ANSIBLE}/hacking/env-setup
     echo "${STARS} COMPLETE - Ansible configuration - Check output."
-    echo "${STARS} INFO - Ansible extras - ${ANSIBLE_EXTRAS}"
 }
 
 function check-dotfiles {
@@ -179,4 +179,4 @@ function extract() {
 export GOROOT=/usr/local/go
 export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 check-dotfiles
-PATH=$HOME/.local/bin:$PATH
+PATH=${PATH}:$HOME/.local/bin

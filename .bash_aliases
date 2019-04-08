@@ -22,3 +22,4 @@ alias nma="cd ${prefix}/${src}/hci-monitor"
 alias cfg="cd ${prefix}/${src}/hci-mnodecfg"
 alias config='/usr/bin/git --git-dir=/home/khulques/.cfg --work-tree=/home/khulques'
 alias sansible=set-ansible
+alias docker=docker.exe

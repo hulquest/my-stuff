@@ -180,3 +180,10 @@ export GOROOT=/usr/local/go
 export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 check-dotfiles
 PATH=${PATH}:$HOME/.local/bin
+
+# GOLANG
+export GOROOT=/usr/local/go
+export GOPATH=/home/khulques/projects/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOBIN
+

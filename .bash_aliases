@@ -4,6 +4,8 @@ if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    echo "${STARS} Configuring aliases for WSL"
    prefix="/c/Users/khulques"
    src="OneDrive\ \-\ NetApp\ Inc/src"
+   alias docker=docker.exe
+   alias 'go'=/c/go/bin/go.exe
 else
    echo "${STARS} Configuring aliases for generic Linux"
    prefix="~"
@@ -22,5 +24,3 @@ alias nma="cd ${prefix}/${src}/hci-monitor"
 alias cfg="cd ${prefix}/${src}/hci-mnodecfg"
 alias config='/usr/bin/git --git-dir=/home/khulques/.cfg --work-tree=/home/khulques'
 alias sansible=set-ansible
-alias docker=docker.exe
-alias 'go'=go.exe

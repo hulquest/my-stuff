@@ -187,3 +187,5 @@ export GOPATH=/home/khulques/projects/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 
+PATH=${PATH}:$(go env GOPATH)/bin
+PATH=${PATH}:${HOME}/apps/helm

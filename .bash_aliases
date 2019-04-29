@@ -10,8 +10,10 @@ else
    echo "${STARS} Configuring aliases for generic Linux"
    prefix="~"
    src="src/projects"
+   alias mk=minikube
 fi
 
+alias k=kubectl
 alias lr='ls -ltr'
 alias ll='ls -alF'
 alias la='ls -A'

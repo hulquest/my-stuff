@@ -175,6 +175,16 @@ function extract() {
         echo "extract: error $1 is not valid"
     fi
 }
+PLATFORM=$(uname -r)
+if [[ ${PLATFORM} == *"Microsoft" ]] ; then
+   echo "${STARS} Configure paths for WSL."
+   # Need to install go locally on WSL (~/go) to get around Avecto nonsense.  Therefore go projects go here.
+   # I might be able to figure this out but not right now.
+   export GOPATH=/home/khulques/projects/go
+else
+    export GOPATH=/home/khulques/go
+
+fi
 
 export GOROOT=/usr/local/go
 export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
@@ -182,8 +192,7 @@ check-dotfiles
 PATH=${PATH}:$HOME/.local/bin
 
 # GOLANG
-export GOROOT=/usr/local/go
-export GOPATH=/home/khulques/projects/go
+export GOROOT=/usr/local/go # Same for WSL but in PoSH it is C:/Go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 

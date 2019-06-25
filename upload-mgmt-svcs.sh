@@ -1,12 +1,70 @@
 #!/usr/bin/env bash
 # To upload a version of management services
+OPTS=`getopt -o vhb: --long verbose,help,build-id: -n 'parse-options' -- "$@"`
+
+if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
+
+eval set -- "$OPTS"
+
+VERBOSE=false
+HELP=false
+BUILD="0"
+
+while true; do
+  case "$1" in
+      -v | --verbose ) VERBOSE=true; shift ;;
+      -h | --help )    HELP=true; shift ;;
+      -b | --build-id ) BUILD="$2"; shift ; shift;;
+      -- ) shift; break ;;
+      * ) break ;;
+  esac
+done
+
+if [ ${VERBOSE} == true ] ; then
+    set -x
+fi
+
+if [[ ${BUILD} == "0" ]] ; then
+   echo "* * * ERR: Build id is a required parameter.  Form: x.y.nnnn"
+   exit 1
+else
+   echo "* * * INFO: Will download and install build version: ${BUILD}"
+   FAT_TAR="mnode2_${BUILD}.tar.gz"
+   FAT_TAR_URL="http://sf-artifactory.eng.solidfire.net/artifactory/generic-binary-local/${FAT_TAR}"
+   BINTRAY_URL="https://api.bintray.com/content/netapp-downloads/management-services/upgrade-bundle/${BUILD}/${FAT_TAR}"
+fi
+
 if [ -z ${BINTRAY_USER} ] ; then
    echo "Need to set an environment variable called BINTRAY_USER with the value of your Bintray user id."
-   exit 1
+   exit 2
 fi
 if [ -z ${API_KEY} ] ; then
    echo "Need to set an environment variable called API_KEY with the value of your Bintray API key."
-   exit 2
+   exit 3
 fi
-echo "* * * INFO: Posting management services $1"
-curl -X PUT -T "mnode2_${1}.tar.gz" -u${BINTRAY_USER}:${API_KEY} "https://api.bintray.com/content/netapp-downloads/management-services/upgrade-bundle/${1}/mnode2_${1}.tar.gz?publish=1&explode=0&override=1"
+
+# Download
+if [ -f ${FAT_TAR} ] ; then
+   echo "* * * INFO: ${FAT_TAR} already downloaded."
+else
+   echo "* * * INFO: Downloading management services ${BUILD}"
+   wget -o "download-${BUILD}.log" http://sf-artifactory.eng.solidfire.net/artifactory/generic-binary-local/${FAT_TAR}
+   if [ $? == 0 ] ; then
+       echo "* * * INFO: Successful download of management services ${BUILD}"
+   else
+       echo "* * *  ERR: Failed to download management services ${BUILD}"
+       echo "* * *  ERR: Attempted download from URL [${FAT_TAR_URL}]"
+       exit 4
+   fi
+fi
+
+# Install
+echo "* * * INFO: Installing management services ${BUILD}"
+curl -X PUT -T "${FAT_TAR}" -u${BINTRAY_USER}:${API_KEY} "${BINTRAY_URL}?publish=1&explode=0&override=1"
+if [ $? == 0 ] ; then
+    echo "* * * INFO: Successful installation of management services ${BUILD}"
+    rm ${FAT_TAR}
+else
+    echo "* * *  ERR: Failed to install management services ${BUILD}"
+    exit 5
+fi

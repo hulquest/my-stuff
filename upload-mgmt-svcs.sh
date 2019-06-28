@@ -9,19 +9,32 @@ eval set -- "$OPTS"
 VERBOSE=false
 HELP=false
 BUILD="0"
+REPO="management-services-stg"
 
 while true; do
   case "$1" in
       -v | --verbose ) VERBOSE=true; shift ;;
       -h | --help )    HELP=true; shift ;;
-      -b | --build-id ) BUILD="$2"; shift ; shift;;
+      -b | --build-id ) BUILD="$2"; shift ; shift ;;
+      -p | --production ) PROD=true; shift ;;
       -- ) shift; break ;;
       * ) break ;;
   esac
 done
 
+if [ ${HELP} == true ] ; then
+   echo "$0 [--verbose] [--help] <--build-id 2.1.282> [--production]"
+   echo "   Pushes to Bintray Test by default.  Only certain credentials can push to production."
+   exit -1
+fi
+
 if [ ${VERBOSE} == true ] ; then
     set -x
+fi
+
+if [ ${PROD} == true ] ; then
+   echo "* * * WARN: Pushing to production."
+   REPO="management-services"
 fi
 
 if [[ ${BUILD} == "0" ]] ; then
@@ -31,7 +44,7 @@ else
    echo "* * * INFO: Will download and install build version: ${BUILD}"
    FAT_TAR="mnode2_${BUILD}.tar.gz"
    FAT_TAR_URL="http://sf-artifactory.eng.solidfire.net/artifactory/generic-binary-local/${FAT_TAR}"
-   BINTRAY_URL="https://api.bintray.com/content/netapp-downloads/management-services/upgrade-bundle/${BUILD}/${FAT_TAR}"
+   BINTRAY_URL="https://api.bintray.com/content/netapp-downloads/${REPO}/upgrade-bundle/${BUILD}/${FAT_TAR}"
 fi
 
 if [ -z ${BINTRAY_USER} ] ; then
@@ -48,7 +61,7 @@ if [ -f ${FAT_TAR} ] ; then
    echo "* * * INFO: ${FAT_TAR} already downloaded."
 else
    echo "* * * INFO: Downloading management services ${BUILD}"
-   wget -o "download-${BUILD}.log" http://sf-artifactory.eng.solidfire.net/artifactory/generic-binary-local/${FAT_TAR}
+   wget -o "download-${BUILD}.log" ${FAT_TAR_URL}
    if [ $? == 0 ] ; then
        echo "* * * INFO: Successful download of management services ${BUILD}"
    else

@@ -93,11 +93,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 function set-ansible {
     if [[ ${PLATFORM} == *"Microsoft" ]] ; then
         PREFIX='/c/Users'
+        SRC="${PREFIX}/khulques/src"
     else
         PREFIX='/home'
+        SRC="${PREFIX}/khulques/src/projects"
     fi   
 
-    SRC="${PREFIX}/khulques/src"
     export ANSIBLE_CONFIG=$HOME/ansible.cfg
     export ANSIBLE=${SRC}/ansible
     export ANSIBLE_LIBRARY=${ANSIBLE}/lib/ansible/modules
@@ -203,4 +204,4 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 
 PATH=${PATH}:$(go env GOPATH)/bin
-PATH=${PATH}:${HOME}/apps/helm
+PATH=${PATH}:${HOME}/apps/helm:${HOME}/apps/tiller

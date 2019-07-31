@@ -150,16 +150,6 @@ source ~/.git-prompt.sh
 export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\n\$ '
 export IBUS_ENABLE_SYNC_MODE=1
 
-function uu
-{
-   BRANCH=$1
-   if [[ -z ${BRANCH} ]] ; then
-       echo "Must supply upstream branch name"
-       return 1
-   fi
-   git fetch upstream
-   git merge upstream/${BRANCH}
-}
 function extract() {
     if [ -f "$1" ] ; then
         case "$1" in 

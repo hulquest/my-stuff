@@ -3,7 +3,7 @@ PLATFORM=$(uname -r)
 if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    echo "${STARS} Configuring aliases for WSL"
    prefix="/c/Users/khulques"
-   src="OneDrive\ \-\ NetApp\ Inc/src"
+   src="src"
    alias docker=docker.exe
    alias 'go'=/c/go/bin/go.exe
 else

@@ -72,12 +72,13 @@ else
 fi
 
 # Install
-echo "* * * INFO: Installing management services ${BUILD}"
-curl -X PUT -T "${FAT_TAR}" -u${BINTRAY_USER}:${API_KEY} "${BINTRAY_URL}?publish=1&explode=0&override=1"
+echo "* * * INFO: Upload management services ${BUILD}"
+RESP=$(curl -w "%{http_code}" -X PUT -T "${FAT_TAR}" -u${BINTRAY_USER}:${API_KEY} "${BINTRAY_URL}?publish=1&explode=0&override=1")
+echo "\nResponse from curl: ${RESP}\n"
 if [ $? == 0 ] ; then
-    echo "* * * INFO: Successful installation of management services ${BUILD}"
+    echo "* * * INFO: Successful upload of management services ${BUILD}"
     rm ${FAT_TAR}
 else
-    echo "* * *  ERR: Failed to install management services ${BUILD}"
+    echo "* * *  ERR: Failed to upload management services ${BUILD}"
     exit 5
 fi

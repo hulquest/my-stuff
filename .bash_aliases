@@ -24,5 +24,6 @@ alias src="cd ${prefix}/${src}"
 alias sfp="cd ${prefix}/${src}/sfprime"
 alias nma="cd ${prefix}/${src}/hci-monitor"
 alias cfg="cd ${prefix}/${src}/hci-mnodecfg"
+alias nks="cd ${prefix}/${src}/hci-nks-service"
 alias config='/usr/bin/git --git-dir=/home/khulques/.cfg --work-tree=/home/khulques'
 alias sansible=set-ansible

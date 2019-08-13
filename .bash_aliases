@@ -6,14 +6,15 @@ if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    src="src"
    alias docker=docker.exe
    alias 'go'=/c/go/bin/go.exe
+   alias k=kubectl.exe
 else
    echo "${STARS} Configuring aliases for generic Linux"
    prefix="~"
    src="src/projects"
    alias mk=minikube
+   alias k=kubectl
 fi
 
-alias k=kubectl
 alias lr='ls -ltr'
 alias ll='ls -alF'
 alias la='ls -A'

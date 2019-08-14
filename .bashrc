@@ -177,13 +177,9 @@ if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    echo "${STARS} Configure paths for WSL."
    # Need to install go locally on WSL (~/go) to get around Avecto nonsense.  Therefore go projects go here.
    # I might be able to figure this out but not right now.
-<<<<<<< 8b6bc98bd63669482b96392d642c71bf11c974ea
    export GOPATH=/home/khulques/projects/go
 else
    export GOPATH=/home/khulques/go
-=======
-   export GOPATH=/home/khulques/projects/go else export GOPATH=/home/khulques/go
->>>>>>> updates for wsl and OD updates.
 
 fi
 

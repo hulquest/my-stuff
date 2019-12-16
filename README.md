@@ -1,5 +1,5 @@
 # my-stuff
-This is a repository I use to track my dot files.  
+This is a repository I use to track my dot files.  I have to work on a corporate laptop with a Windows 10 image so I get into the Windows toolchain, particularly the PowerShell ecosystem when I am disconnected from my linux dev environment.
 
 I have a [Linux setup file](https://gist.github.com/hulquest/7b370ebd5ca482a001fe30805c372710) that will bootstrap a new system.  
 
@@ -13,3 +13,7 @@ The **__windows__** branch has my PowerShell startup files.  There is no bootstr
 
 ### Windows SubSystem for Linux
 [With the resolution of #2](https://github.com/hulquest/my-stuff/issues/2) there is support in the .bash_aliases file to branch on the type of Linux shell.
+
+### Linux Setup
+Get helm 3
+``` curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash ```

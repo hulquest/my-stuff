@@ -179,7 +179,7 @@ if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    # I might be able to figure this out but not right now.
    export GOPATH=/home/khulques/projects/go
 else
-   export GOPATH=/home/khulques/go
+   export GOPATH=${HOME}/go
 
 fi
 

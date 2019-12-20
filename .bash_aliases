@@ -13,6 +13,7 @@ else
    src="src/projects"
    alias mk=minikube
    alias k=kubectl
+   export GPGTTY=$(tty) # For signing git commits
 fi
 
 # Ansible configuration

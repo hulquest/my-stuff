@@ -1,0 +1,6 @@
+py35/
+py37/
+py35-sfp/
+*kevin*
+venv/
+*.log

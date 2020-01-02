@@ -4,3 +4,4 @@ py35-sfp/
 *kevin*
 venv/
 *.log
+.vscode

@@ -1,0 +1,8 @@
+[Unit]
+Description=Mount kevin's home directory.
+
+[Service]
+ExecStart=/data/mount-kevin-home.sh
+
+[Install]
+WantedBy=multi-user.target

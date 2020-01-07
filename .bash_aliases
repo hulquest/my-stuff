@@ -1,4 +1,5 @@
 #!/bin/bash
+# FIND setup script at: https://gist.github.com/hulquest/7b370ebd5ca482a001fe30805c372710
 PLATFORM=$(uname -r)
 if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    echo "${STARS} Configuring aliases for WSL"

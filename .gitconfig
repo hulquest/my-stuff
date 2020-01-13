@@ -1,0 +1,20 @@
+[user]
+        name = Kevin Hulquest
+        email = khulques@netapp.com
+	signingkey = 94E487E7DE50AF65
+[url "ssh://git@github.com/"]
+        insteadOf = https://github.com/
+[core]
+        editor = vim
+        excludesfile = /home/kevin/.gitignore
+[push]
+        default = simple
+[alias]
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	mrb = !sh ~/scripts/remote-merged-branches.sh
+	rb = !sh ~/scripts/remote-branches.sh
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+[commit]
+        gpgsign = true
+[gpg]
+	program = gpg

@@ -8,6 +8,7 @@ if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    alias docker=docker.exe
    alias 'go'=/c/go/bin/go.exe
    alias k=kubectl.exe
+   alias kind=kind.exe
 else
    echo "${STARS} Configuring aliases for generic Linux"
    prefix="~"

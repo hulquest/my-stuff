@@ -1,7 +1,7 @@
 [user]
         name = Kevin Hulquest
-        email = khulques@netapp.com
-	signingkey = 94E487E7DE50AF65
+	email = kevin.hulquest@netapp.com
+	signingkey = 50945F81
 [url "ssh://git@github.com/"]
         insteadOf = https://github.com/
 [core]
@@ -15,6 +15,6 @@
 	rb = !sh ~/scripts/remote-branches.sh
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [commit]
-        gpgsign = true
+	gpgsign = true
 [gpg]
 	program = gpg

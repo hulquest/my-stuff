@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/kevin/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -97,6 +97,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+[ -f ${HOME}/.bash_aliases ] && . ${HOME}/.bash_aliases || echo "* * * No ~/.bash_aliases found"
 set -o vi
-alias lr='ls -ltr'
-[ -f ${HOME}/.bash_aliases ] && . ${HOME}/.bash_aliases || echo "* * * Did not find .bash_aliases to source"
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock

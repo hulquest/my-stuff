@@ -99,4 +99,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 [ -f ${HOME}/.bash_aliases ] && . ${HOME}/.bash_aliases || echo "* * * No ~/.bash_aliases found"
 set -o vi
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export PATH=${PATH}:/usr/local/go/bin:${HOME}/go/bin
+
+# I only run dev as kevin and need to run rootless docker to be compatible with devs who work from a Mac
+if [[ ${USER} == "kevin" ]] ; then
+    export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+    [ -f ${HOME}/scripts/start-rootless-docker.sh ] && ${HOME}/scripts/start-rootless-docker.sh || "* * * No ~/scripts/start-rootless-docker.sh"
+fi

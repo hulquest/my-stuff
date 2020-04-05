@@ -51,4 +51,7 @@ alias nks="cd ${prefix}/${src}/hci-nks-service"
 alias config='/usr/bin/git --git-dir=${HOME}/.cfg --work-tree=${HOME}'
 alias sansible=set-ansible
 alias h=helm
+alias mk=minikube
+alias k=kubectl
 alias nv=nvim
+alias vi=nvim

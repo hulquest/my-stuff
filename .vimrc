@@ -14,6 +14,8 @@ set guifont=Monospace\ 11
 set iskeyword=@,48-57,_,192-255,.
 set printoptions=paper:letter
 set termencoding=utf-8
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 colorscheme murphy
 set cindent shiftwidth=4
 map <F2> :wn!<CR>

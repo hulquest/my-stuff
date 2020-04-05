@@ -1,7 +1,7 @@
 [user]
         name = Kevin Hulquest
 	email = kevin.hulquest@netapp.com
-	signingkey = 50945F81
+	signingkey = 60B7AC10E265AC40
 [url "ssh://git@github.com/"]
         insteadOf = https://github.com/
 [core]

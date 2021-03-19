@@ -53,5 +53,7 @@ alias sansible=set-ansible
 alias h=helm
 alias mk=minikube
 alias k=kubectl
+alias tf=terraform
 alias nv=nvim
 alias vi=nvim
+alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'

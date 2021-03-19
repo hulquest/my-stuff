@@ -68,7 +68,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git python golang)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,10 +99,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 [ -f ${HOME}/.bash_aliases ] && . ${HOME}/.bash_aliases || echo "* * * No ~/.bash_aliases found"
 set -o vi
-export PATH=${PATH}:/usr/local/go/bin:${HOME}/go/bin
+export PATH=${PATH}:/usr/local/go/bin:${HOME}/go/bin:/usr/local/bin:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
 
 # I only run dev as kevin and need to run rootless docker to be compatible with devs who work from a Mac
-if [[ ${USER} == "kevin" ]] ; then
-    export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-    [ -f ${HOME}/scripts/start-rootless-docker.sh ] && ${HOME}/scripts/start-rootless-docker.sh || "* * * No ~/scripts/start-rootless-docker.sh"
-fi
+#if [[ ${USER} == "kevin" ]] ; then
+    #export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+    #[ -f ${HOME}/scripts/start-rootless-docker.sh ] && ${HOME}/scripts/start-rootless-docker.sh || "* * * No ~/scripts/start-rootless-docker.sh"
+#fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+export GOPATH=${HOME}/go
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

@@ -196,3 +196,5 @@ export PATH=$PATH:$GOROOT/bin:$GOBIN
 
 PATH=${PATH}:$(go env GOPATH)/bin
 PATH=${PATH}:${HOME}/apps/helm:${HOME}/apps/tiller
+
+complete -C /usr/local/bin/terraform terraform

@@ -1,12 +1,12 @@
 [user]
-        name = Kevin Hulquest
+	name = Kevin Hulquest
 	email = kevin.hulquest@netapp.com
 	signingkey = 60B7AC10E265AC40
 [url "ssh://git@github.com/"]
         insteadOf = https://github.com/
 [core]
         editor = vim
-        excludesfile = /home/kevin/.gitignore
+        excludesfile = ~/.gitignore
 [push]
         default = simple
 [alias]
@@ -18,3 +18,12 @@
 	gpgsign = true
 [gpg]
 	program = gpg
+[http]
+	sslVerify = true
+[https]
+	sslVerify = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

@@ -57,3 +57,4 @@ alias tf=terraform
 alias nv=nvim
 alias vi=nvim
 alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
+alias watch='watch '

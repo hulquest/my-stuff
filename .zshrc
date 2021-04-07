@@ -106,8 +106,15 @@ export PATH=${PATH}:/usr/local/go/bin:${HOME}/go/bin:/usr/local/bin:/Application
     #export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
     #[ -f ${HOME}/scripts/start-rootless-docker.sh ] && ${HOME}/scripts/start-rootless-docker.sh || "* * * No ~/scripts/start-rootless-docker.sh"
 #fi
+# set rootless docker environment variables.
+function sd() {
+        source ${HOME}/scripts/set-docker.sh
+}
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 export GOPATH=${HOME}/go
+export GOROOT=/usr/local/go
+export ROOTLESSDIR=~/bin
+export PATH=${GOROOT}/bin:${ROOTLESSDIR}:$PATH
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

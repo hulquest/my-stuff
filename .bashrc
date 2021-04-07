@@ -172,6 +172,7 @@ function extract() {
         echo "extract: error $1 is not valid"
     fi
 }
+
 PLATFORM=$(uname -r)
 if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    echo "${STARS} Configure paths for WSL."

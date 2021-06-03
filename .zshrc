@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ${HOME}/.bash_aliases ] && . ${HOME}/.bash_aliases || echo "* * * No ~/.bash_aliases found"
 set -o vi
 export PATH=${PATH}:/usr/local/go/bin:${HOME}/go/bin:/usr/local/bin:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # I only run dev as kevin and need to run rootless docker to be compatible with devs who work from a Mac
 #if [[ ${USER} == "kevin" ]] ; then
@@ -111,10 +112,18 @@ function sd() {
         source ${HOME}/scripts/set-docker.sh
 }
 
+function fixdns()
+{
+   sudo killall -9 mDNSResponder
+}
+
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 export GOPATH=${HOME}/go
 export GOROOT=/usr/local/go
 export ROOTLESSDIR=~/bin
-export PATH=${GOROOT}/bin:${ROOTLESSDIR}:$PATH
+export GOPRIVATE=github.com/netapp-polaris
+export GITHUB_ID=hulquest
+export GITHUB_USERNAME=hulquest
+export GITHUB_TOKEN=$(cat ${HOME}/.github/token)
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)

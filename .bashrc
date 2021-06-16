@@ -179,21 +179,13 @@ if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    # Need to install go locally on WSL (~/go) to get around Avecto nonsense.  Therefore go projects go here.
    # I might be able to figure this out but not right now.
    export GOPATH=/home/khulques/projects/go
-else
-   export GOPATH=${HOME}/go
-
 fi
 
-export GOROOT=/usr/local/go
-export PATH=${PATH}:${GOROOT}/bin:${GOPATH}/bin
 check-dotfiles
 PATH=${PATH}:$HOME/.local/bin
 PATH=${PATH}:"/c/Program\ Files/Docker/Docker/resources/bin"
 
 # GOLANG
-export GOROOT=/usr/local/go # Same for WSL but in PoSH it is C:/Go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin:$GOBIN
 
 PATH=${PATH}:$(go env GOPATH)/bin
 PATH=${PATH}:${HOME}/apps/helm:${HOME}/apps/tiller

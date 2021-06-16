@@ -10,7 +10,7 @@ if [[ ${PLATFORM} == *"Microsoft" ]] ; then
    alias k=kubectl.exe
    alias kind=kind.exe
 else
-   echo "${STARS} Configuring aliases for generic Linux"
+   # echo "${STARS} Configuring aliases for generic Linux"
    prefix="~"
    src="src/projects"
    alias mk=minikube
@@ -44,10 +44,8 @@ alias l='ls -CF'
 alias gv=gvim
 alias pip3=/usr/bin/pip3
 alias src="cd ${prefix}/${src}"
-alias sfp="cd ${prefix}/${src}/sfprime"
-alias nma="cd ${prefix}/${src}/hci-monitor"
-alias cfg="cd ${prefix}/${src}/hci-mnodecfg"
-alias nks="cd ${prefix}/${src}/hci-nks-service"
+alias pol="cd ${prefix}/${src}/polaris"
+alias op="cd ${prefix}/${src}/polaris/acc-operator"
 alias config='/usr/bin/git --git-dir=${HOME}/.cfg --work-tree=${HOME}'
 alias sansible=set-ansible
 alias h=helm

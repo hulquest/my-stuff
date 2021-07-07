@@ -37,6 +37,12 @@ function set-ansible {
     echo "${STARS} COMPLETE - Ansible configuration - Check output."
 }
 
+function astra-version {
+    cd ${HOME}/src/projects/polaris
+    ./cicd/scripts/get_latest_version_tag.sh --version-only $1
+    cd -
+}
+
 alias lr='ls -ltr'
 alias ll='ls -alF'
 alias la='ls -A'
@@ -56,3 +62,4 @@ alias nv=nvim
 alias vi=nvim
 alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
 alias watch='watch '
+alias av=astra-version

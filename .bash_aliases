@@ -50,7 +50,7 @@ alias l='ls -CF'
 alias gv=gvim
 alias pip3=/usr/bin/pip3
 alias src="cd ${prefix}/${src}"
-alias pol="cd ${prefix}/${src}/polaris"
+alias po="cd ${prefix}/${src}/polaris"
 alias op="cd ${prefix}/${src}/polaris/acc-operator"
 alias config='/usr/bin/git --git-dir=${HOME}/.cfg --work-tree=${HOME}'
 alias sansible=set-ansible
